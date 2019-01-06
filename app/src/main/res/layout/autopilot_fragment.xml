@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="-25°" />
+                android:text="@string/__25" />
 
             <Button
                 android:id="@+id/button4"
@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="-10°" />
+                android:text="@string/__10" />
 
             <Button
                 android:id="@+id/button3"
@@ -56,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="-1°" />
+                android:text="@string/__1" />
 
             <Button
                 android:id="@+id/button2"
@@ -64,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="+1°" />
+                android:text="@string/_1" />
 
             <Button
                 android:id="@+id/button"
@@ -72,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="+10°" />
+                android:text="@string/_10" />
 
             <Button
                 android:id="@+id/button6"
@@ -80,14 +80,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="+25°" />
+                android:text="@string/_25" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="<- Adjust Heading ->" />
+            android:text="@string/adjust_heading" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

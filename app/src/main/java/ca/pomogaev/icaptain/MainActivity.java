@@ -93,8 +93,10 @@ public class MainActivity extends AppCompatActivity {
 
                     switch (autopilot.state) {
                         case 0:
+                            offlineFragment.updateHelpLabels();
                             break;
                         case 1:
+                            offlineFragment.updateHelpLabels();
                             break;
                         case 2:
                             manualFragment.updateRudderAutopilot();
