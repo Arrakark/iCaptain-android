@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottom_nav;
 
     private TextView textView1;
-    private TextView textView2;
+    //private TextView textView2;
     private TextView textView3;
     private TextView textView4;
     private TextView textView5;
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         autopilot = new AutopilotRestClient(this);
         bottom_nav = (BottomNavigationView) findViewById(R.id.navigation);
         textView1 = (TextView) findViewById(R.id.textView1);
-        textView2 = (TextView) findViewById(R.id.textView2);
+        //textView2 = (TextView) findViewById(R.id.textView2);
         textView3 = (TextView) findViewById(R.id.textView3);
         textView4 = (TextView) findViewById(R.id.textView4);
         textView5 = (TextView) findViewById(R.id.textView5);
@@ -139,10 +139,10 @@ public class MainActivity extends AppCompatActivity {
     public void updateLabels() {
         switch (autopilot.connected) {
             case 1:
-                textView4.setText("Connection Status: Connected");
+                textView4.setText("Connected");
                 break;
             case 0:
-                textView4.setText("Connection Status: Disconnected");
+                textView4.setText("Disconnected");
                 break;
         }
         String status = "";
@@ -160,8 +160,8 @@ public class MainActivity extends AppCompatActivity {
                 status = "Autopilot Control";
                 break;
         }
-        textView1.setText("Autopilot Status: " + status);
-        textView2.setText("Lat: " + Double.toString(autopilot.lat) + " Long: " + Double.toString(autopilot.lng));
+        textView1.setText("Autopilot: " + status);
+        //textView2.setText("Lat: " + Double.toString(autopilot.lat) + " Long: " + Double.toString(autopilot.lng));
         textView3.setText("GPS HDOP: " + Double.toString(autopilot.hdop));
         textView5.setText("Speed : " + Double.toString(autopilot.speed) + " knots");
         textView6.setText("Rudder: " + Double.toString(autopilot.rudder_speed));
