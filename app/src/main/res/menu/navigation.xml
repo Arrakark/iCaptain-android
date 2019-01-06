@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/offline"
+        android:icon="@drawable/ic_not_interested_black_24dp"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/manual"
+        android:icon="@drawable/ic_slow_motion_video_black_24dp"
+        android:title="@string/title_dashboard" />
+
+    <item
+        android:id="@+id/autopilot"
+        android:icon="@drawable/ic_play_circle_outline_black_24dp"
+        android:title="@string/title_notifications" />
+
+</menu>
