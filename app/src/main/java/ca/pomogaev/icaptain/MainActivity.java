@@ -106,12 +106,12 @@ public class MainActivity extends AppCompatActivity {
                             autopilotFragment.updateText();
                             break;
                     }
-                    handler.postDelayed(this, 300);
+                    handler.postDelayed(this, 750);
                 //}
             }
 
         };
-        handler.postDelayed(r, 300);
+        handler.postDelayed(r, 750);
     }
 
     public void updateControlFragment() {
