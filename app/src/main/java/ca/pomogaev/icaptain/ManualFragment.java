@@ -54,7 +54,7 @@ public class ManualFragment extends Fragment {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 //snap seekbar to middle
-                seekBar.setProgress(seekBar.getMax() / 2);
+                //seekBar.setProgress(seekBar.getMax() / 2);
             }
 
             @Override
