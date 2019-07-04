@@ -44,6 +44,24 @@ public class AutopilotFragment extends Fragment implements View.OnClickListener 
         Button oneright = (Button) rootView.findViewById(R.id.button2);
         oneright.setOnClickListener(this);
 
+        Button b7 = (Button) rootView.findViewById(R.id.button7);
+        b7.setOnClickListener(this);
+
+        Button b8 = (Button) rootView.findViewById(R.id.button8);
+        b8.setOnClickListener(this);
+
+        Button b9 = (Button) rootView.findViewById(R.id.button9);
+        b9.setOnClickListener(this);
+
+        Button b10 = (Button) rootView.findViewById(R.id.button10);
+        b10.setOnClickListener(this);
+
+        Button b11 = (Button) rootView.findViewById(R.id.button11);
+        b11.setOnClickListener(this);
+
+        Button b12 = (Button) rootView.findViewById(R.id.button12);
+        b12.setOnClickListener(this);
+
         return rootView;
     }
 
@@ -68,6 +86,24 @@ public class AutopilotFragment extends Fragment implements View.OnClickListener 
                 break;
             case R.id.button6:
                 autopilot.nudgeAutopilotHeading(25);
+                break;
+            case R.id.button7:
+                autopilot.pminus();
+                break;
+            case R.id.button8:
+                autopilot.pplus();
+                break;
+            case R.id.button9:
+                autopilot.dminus();
+                break;
+            case R.id.button10:
+                autopilot.dplus();
+                break;
+            case R.id.button11:
+                autopilot.ddminus();
+                break;
+            case R.id.button12:
+                autopilot.ddplus();
                 break;
         }
         updateText();

@@ -29,6 +29,13 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView4;
     private TextView textView5;
     private TextView textView6;
+    private TextView textView7;
+    private TextView textView8;
+    private TextView textView9;
+    private TextView textView10;
+    private TextView textView11;
+    private TextView textView12;
+    private TextView textView13;
 
     Runnable r;
 
@@ -71,6 +78,13 @@ public class MainActivity extends AppCompatActivity {
         textView4 = (TextView) findViewById(R.id.textView4);
         textView5 = (TextView) findViewById(R.id.textView5);
         textView6 = (TextView) findViewById(R.id.textView6);
+        textView7 = (TextView) findViewById(R.id.textView7);
+        textView8 = (TextView) findViewById(R.id.textView8);
+        textView9 = (TextView) findViewById(R.id.textView9);
+        textView10 = (TextView) findViewById(R.id.textView10);
+        textView11 = (TextView) findViewById(R.id.textView11);
+        textView12 = (TextView) findViewById(R.id.textView12);
+        textView13 = (TextView) findViewById(R.id.textView13);
 
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -166,7 +180,15 @@ public class MainActivity extends AppCompatActivity {
         //textView2.setText("Lat: " + Double.toString(autopilot.lat) + " Long: " + Double.toString(autopilot.lng));
         textView3.setText("GPS HDOP: " + Double.toString(autopilot.hdop));
         textView5.setText("Speed : " + Double.toString(autopilot.speed) + " knots");
-        textView6.setText("Rudder: " + Double.toString(autopilot.rudder_speed));
+        textView6.setText("Rudder position: " + Double.toString(autopilot.rudder_position));
+        textView7.setText("Rudder control: " + Double.toString(autopilot.rudder_control));
+        textView8.setText("P Gain: " + Double.toString(autopilot.p_gain));
+        textView9.setText("D Gain: " + Double.toString(autopilot.d_gain));
+        textView10.setText("Cross track E: " + Double.toString(autopilot.cross_track_error));
+        textView11.setText("Direction E: " + Double.toString(autopilot.direction_error));
+        textView12.setText("DD E: " + Double.toString(autopilot.dderror));
+        textView13.setText("DD Gain: " + Double.toString(autopilot.ddgain));
+
     }
 
 }

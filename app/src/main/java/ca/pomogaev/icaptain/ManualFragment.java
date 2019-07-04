@@ -37,14 +37,14 @@ public class ManualFragment extends Fragment {
 
     public void updateRudderAutopilot() {
         if (rudder_controller != null) {
-            autopilot.rudder_speed = (rudder_controller.getProgress() - 5) * 20;
-            autopilot.setAutopilotRudder((int) autopilot.rudder_speed);
+            autopilot.rudder_control = (rudder_controller.getProgress() - 10) * 10.0;
+            autopilot.setAutopilotRudder((int) autopilot.rudder_control);
         }
     }
 
     public void updateRudderText() {
         if (rudder_status != null) {
-            rudder_status.setText("Rudder: " + String.valueOf(autopilot.rudder_speed));
+            rudder_status.setText("Rudder: " + String.valueOf(autopilot.rudder_control));
         }
     }
 

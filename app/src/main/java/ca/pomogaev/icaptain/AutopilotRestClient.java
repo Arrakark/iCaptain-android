@@ -27,9 +27,15 @@ public class AutopilotRestClient {
     double course;
     double speed;
     int sat_count;
-    double rudder_speed;
+    double d_gain;
+    double p_gain;
+    double rudder_position;
+    double rudder_control;
     double cross_track_error;
     double direction_error;
+    double dderror;
+    double ddgain;
+    String url;
     RequestQueue queue;
 
     Context main_context;
@@ -46,15 +52,20 @@ public class AutopilotRestClient {
         course = 0;
         speed = 0;
         sat_count = 0;
-        rudder_speed = 0;
+        rudder_position = 0;
+        rudder_control = 0;
+        dderror = 0;
+        ddgain = 0;
         cross_track_error = 0;
         direction_error = 0;
         connected = 0;
+        d_gain = 0;
+        p_gain = 0;
+        url = "http://192.168.0.1/";
     }
 
     public void getAutopilotData() {
         // Instantiate the RequestQueue.
-        String url = "http://192.168.0.1/";
         JsonObjectRequest request = new JsonObjectRequest(url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -68,15 +79,20 @@ public class AutopilotRestClient {
                                 heading = data.getDouble("heading");
                                 //waypoint_lng = data.getDouble("waypoint_long");
                                 //waypoint_lat = data.getDouble("waypoint_lat");
-                                lat = data.getDouble("lat");
-                                lng = data.getDouble("long");
-                                hdop = data.getDouble("hdop");
+                                //lat = data.getDouble("lat");
+                                //lng = data.getDouble("long");
+                                //hdop = data.getDouble("hdop");
                                 course = data.getDouble("course");
-                                speed = data.getDouble("speed");
-                                sat_count = data.getInt("state");
-                                rudder_speed = data.getDouble("rudder_speed");
-                                //cross_track_error = data.getDouble("cross_track_error");
-                                //direction_error = data.getDouble("direction_error");
+                                //speed = data.getDouble("speed");
+                                //sat_count = data.getInt("state");
+                                //rudder_control = data.getDouble("rudder_control");
+                                rudder_position = data.getDouble("rudder_position");
+                                cross_track_error = data.getDouble("cross_track_error");
+                                direction_error = data.getDouble("direction_error");
+                                d_gain = data.getDouble("d_gain");
+                                p_gain = data.getDouble("p_gain");
+                                dderror = data.getDouble("dd_error");
+                                ddgain = data.getDouble("dd_gain");
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -95,7 +111,7 @@ public class AutopilotRestClient {
 
     public void setAutopilotState(final int set_state) {
         // Instantiate the RequestQueue.
-        String url = "http://192.168.0.1/set_state?" + String.valueOf(set_state);
+        String url = this.url + "/set_state?" + String.valueOf(set_state);
         JsonObjectRequest request = new JsonObjectRequest(url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -132,7 +148,7 @@ public class AutopilotRestClient {
 
     public void setAutopilotHeading(final int new_heading){
         // Instantiate the RequestQueue.
-        String url = "http://192.168.0.1/set_heading?" + String.valueOf(new_heading);
+        String url = this.url + "/set_heading?" + String.valueOf(new_heading);
         JsonObjectRequest request = new JsonObjectRequest(url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -174,10 +190,70 @@ public class AutopilotRestClient {
         }
         setAutopilotHeading(new_heading);
     }
+    public void pplus(){
+        String url = this.url + "/pplus";
+        JsonObjectRequest request = new JsonObjectRequest(url, null, null, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                connected = 0;
+            }
+        });
+        queue.add(request);
+    }
+    public void pminus(){
+        String url = this.url + "/pminus";
+        JsonObjectRequest request = new JsonObjectRequest(url, null, null, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                connected = 0;
+            }
+        });
+        queue.add(request);
+    }
+    public void dminus(){
+        String url = this.url + "/dminus";
+        JsonObjectRequest request = new JsonObjectRequest(url, null, null, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                connected = 0;
+            }
+        });
+        queue.add(request);
+    }
+    public void dplus(){
+        String url = this.url + "/dplus";
+        JsonObjectRequest request = new JsonObjectRequest(url, null, null, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                connected = 0;
+            }
+        });
+        queue.add(request);
+    }
+    public void ddminus(){
+        String url = this.url + "/ddminus";
+        JsonObjectRequest request = new JsonObjectRequest(url, null, null, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                connected = 0;
+            }
+        });
+        queue.add(request);
+    }
+    public void ddplus(){
+        String url = this.url + "/ddplus";
+        JsonObjectRequest request = new JsonObjectRequest(url, null, null, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                connected = 0;
+            }
+        });
+        queue.add(request);
+    }
 
     public void setAutopilotRudder(final int manual_rudder){
         // Instantiate the RequestQueue.
-        String url = "http://192.168.0.1/manual_control?" + String.valueOf(manual_rudder);
+        String url = this.url + "/manual_control?" + String.valueOf(manual_rudder);
         JsonObjectRequest request = new JsonObjectRequest(url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -188,7 +264,7 @@ public class AutopilotRestClient {
                                 if (response.getInt("return_value") == 1) {
                                     //Toast.makeText(main_context,
                                     //        "Set Mode " + String.valueOf(set_state), Toast.LENGTH_SHORT).show();
-                                    rudder_speed = manual_rudder;
+                                    rudder_control = manual_rudder;
                                 } else {
                                     //Toast.makeText(main_context,
                                     //        "Cannot Set Rudder " + String.valueOf(manual_rudder), Toast.LENGTH_SHORT).show();
